@@ -1,0 +1,72 @@
+TOP 10 REST Assured API Automation Interview Questions and Answers
+1. What is Rest assured and Why it is used?
+--> Rest Assured is one of the most populer java based library which is highly used in API test automation
+--> It helps in writing powerful and maintainable tests for RESTful APIs.
+
+2. What is URI, endpoint and query parameter?
+https://  regres.in      /api/users  ?   page=2
+protocol  URI/base URL   end point       query parameter
+
+3. What are the static imports in Rest Assured and why we need it?
+import static io.restassured.RestAssured.*;
+import static io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matchers.*;
+
+4. What are the given, when and then methods in Rest-assured?
+given()
+    .param("page","2")
+    .auth().none().
+when()
+    .get("https://regres.in/api/users").
+then()
+    .statusCode(200)
+    .body("page",equalTo(2));
+
+5. What are the different authentication methods in Rest-assured?
+    Basic authentication
+    Digest authentication
+    Form authentication
+    OAuth 1 and OAuth 2
+
+6. How to check Response time for an API?
+-->getTime() - The response time in milliseconds.
+-->getTimeIn(TimeUnit timeunit) - The response time in the given time unit.
+-->time() - The response time in milliseconds.
+-->timeIn(TimeUnit timeunit) - The response time in the given time unit.
+
+7. How to send a complex payload for a post API using POJO classes?
+Post Url = https://regres.in/api/users
+payload
+{
+    "name":"bahadir",
+    "job":"qa engineer",
+    "skills":["selenium","java"],
+    "details":{
+            "companyName":"XYZ",
+            "emailId":"bahadir@test.com"
+              }
+}
+
+8. How to log request and response for a post API?
+Response response = PetEndPoints.readPet(createdId);
+        response.then().log().all();
+        Assert.assertEquals(response.getStatusCode(), 200);
+
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 23:14:04 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, DELETE, PUT
+Access-Control-Allow-Headers: Content-Type, api_key, Authorization
+Server: Jetty(9.2.9.v20150224)
+
+9. How to validate the response of a POST API?
+
+10. How to verify cookie, headers & content-type in API response?
+Using below methods.
+-->getHeaders()
+-->getCookies()
+-->getContentType()
+
